@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<link href="css/main.css" rel="stylesheet">
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">Mi Lista</h2>
+  <input type="text" id="myInput" placeholder="Agrega más">
+  <span onclick="newElement()" class="addBtn">Agregar lista</span>
+</div>
+
+<ul id="lista"></ul>
+
+<script>
+
+// agrega el simbolo check! a la lista
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Crea un nuevo item, cuando le pones agregarAdd" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Debes escribir algo!");
+  } else {
+    document.getElementById("lista").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+<script type="text/javascript" src = "js/main.js"></script>
+</body>
+</html>
